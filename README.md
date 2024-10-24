@@ -38,6 +38,7 @@ Key findings from our analysis:
    - RBNS: Direct reserve prediction
    - IBNR: Two-stage frequency-severity approach
    - XGBoost implementation with SHAP interpretation
+![image](https://github.com/user-attachments/assets/06f564ee-5705-4406-8c20-9a22b5e51d1d)
 
 ### Technologies Used
 - R (data.table, ggplot2)
