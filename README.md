@@ -1,48 +1,54 @@
 # Insurance Reserving with Machine Learning
 
-This project implements advanced machine learning techniques to enhance insurance reserving accuracy for RBNS (Reported But Not Settled) and IBNR (Incurred But Not Reported) claims.
+An advanced machine learning approach to predict insurance reserves using XGBoost, achieving 98.23% accuracy in RBNS predictions and capturing complex claim patterns.
 
-## Project Overview
+## Model Performance
 
-We developed a comprehensive reserving model using XGBoost to predict both the frequency and severity of insurance claims. The project aims to improve upon traditional actuarial methods by leveraging granular policy-level data and capturing complex, non-linear relationships.
+![image](https://github.com/user-attachments/assets/e24f44a3-9694-4144-a468-8ff20c53d4fd)
 
-### Key Features
+*RBNS Reserves: High accuracy in predicting claim reserves across different occurrence months, with predicted values closely tracking actual reserves.*
 
-- Synthetic data generation mimicking real-world insurance portfolios
-- Separate modeling for RBNS and IBNR claims
-- Feature engineering to capture time-based and policy-specific characteristics
-- XGBoost implementation for both classification (claim occurrence) and regression (claim amount)
-- Model interpretability using SHAP values and partial dependence plots
+## Key Insights
 
-## Results
+### Feature Impact Analysis
+![image](https://github.com/user-attachments/assets/a5670395-78f1-4fd4-b4ab-91712ec54f8c)
 
-- RBNS Model: Achieved 98.23% accuracy in total reserve prediction
-- IBNR Model: Implemented a two-stage approach combining frequency and severity predictions
-- Enhanced granularity: Provided policy-level reserve estimates
+Our XGBoost model revealed key drivers of claim costs:
+- Policy price and age are the strongest predictors (4.9% and 4.4% impact)
+- Time-based features (valuation delay, payment timing) show significant influence
+- Brand and model characteristics provide additional predictive power
+
+### Claim Patterns
+![image](https://github.com/user-attachments/assets/16672322-9c01-4928-8db3-61ab89c59791)
+
+Key findings from our analysis:
+- Reporting delays follow an exponential distribution with most claims reported within 50 days
+- Payment processing shows a normal distribution centered around 35 days
+- Policy distribution remains stable across underwriting periods
+- Distinct severity patterns observed between claim types (B vs BO claims)
+
+## Technical Implementation
+
+### Data Pipeline
+1. **Synthetic Data Generation**
+   - Realistic policy and claim simulation
+   - Time-dependent feature engineering
+
+2. **Model Architecture**
+   - RBNS: Direct reserve prediction
+   - IBNR: Two-stage frequency-severity approach
+   - XGBoost implementation with SHAP interpretation
+
+### Technologies Used
+- R (data.table, ggplot2)
+- XGBoost
+- SHAP for interpretability
+
+## Results and Impact
+
+- **RBNS Accuracy:** 98.23% in reserve prediction
+- **Feature Engineering:** Captured complex temporal patterns
+- **Interpretability:** Clear insights into claim drivers
+- **Granular Predictions:** Policy-level reserve estimates
 
 ## Repository Structure
-
-- `1.Synthetic_data_generation.R`: Scripts for generating synthetic insurance data
-- `2.EDA.R`: Exploratory Data Analysis of the generated datasets
-- `3.Feature_Engineering.R`: Data cleaning and feature engineering
-- `4.model_building.R`: RBNS and IBNR claims modeling using XGBoost
-
-## Technologies Used
-
-- R
-- data.table for efficient data manipulation
-- XGBoost for machine learning models
-- ggplot2 for visualizations
-- SHAPforxgboost for model interpretability
-
-## Key Findings
-
-- The RBNS model showed high accuracy in predicting total reserves
-- The IBNR model demonstrated the ability to capture complex patterns in claim occurrence and severity
-- Feature importance analysis revealed key drivers of claim costs and frequencies
-
-## Future Work
-
-- Refine IBNR predictions to address current underestimation
-- Incorporate additional external factors for more robust predictions
-- Develop a user-friendly interface for model deployment
